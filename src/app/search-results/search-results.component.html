@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 search_result_cover" >
+      <div class="row total_row ">
+        <div class="col" *ngIf="!returnAttempting">Total Results : <strong>{{searchResult.length}}</strong></div>
+        <div class="col" *ngIf="returnAttempting">Total Results :
+          <strong>{{searchResult.length >= returnSearchResult.length ? returnSearchResult.length : searchResult.length  }}</strong>
+        </div>
+      </div>
+      <div *ngIf ="!flightsFound  && !returnAttempting">
+        <div class="row result_row">
+          <div class="col-12" style="color:red">
+            No results found for the place or date  <strong>{{journeyDate}}</strong> | <a routerLink="/">Back to Home</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf ="flightsFound && !returnAttempting">
+        <div class="row result_row" *ngFor="let result of currentItemsToShow,  let i=index; ">
+          <div class="col-lg-3">
+            <div class="row responsive_adjustment">
+              <div class="col-lg-4  col-6">
+                <div class="air_logo">
+                  <img [src]="result.logo">
+                </div>
+              </div>
+              <div class="col-lg-8  col-6 flex_vertical">
+                <div class="air_name">{{result.airline_name}}  </div>
+                <div class="air_number">{{result.flight_number}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-5  flex_vertical place_to_place">
+                  <div class="flight_place">{{result.fromCity}}</div>
+                  <div class="flight_time">Dep: {{result.depTime}} - Arr: {{result.arrTime}}</div>
+                  <div class="flight_place">{{result.toCity}}</div>
+              </div>
+              <div class="col-md-3 flex_vertical hours_and_stops">
+                  <div class="flight_duration"> <span>{{result.duration}} </span>hrs</div>
+                  <div class="hr"></div>
+                  <div class="flight_stops">  <span>{{result.noofstops == 0 ? "Non stop" : "Stops : "+result.noofstops }} </span></div>
+              </div>
+              <div class="col-md-4 flex_vertical date_cover">
+                  <div class="flight_time">Date</div>
+                  <div class="flight_place">{{result.travelDate}}</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3">
+             <div class="price_book">
+                <div class="price">${{result.price}}</div>
+                <button class="btn btn-success"  (click) ="bookNow(i)">Book Now</button>
+             </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div *ngIf ="(!flightsFound || !returnFlightsFound) && returnAttempting">
+        <div class="row result_row">
+          <div class="col-12" style="color:red">
+            No results found for the place or dates  <strong>{{journeyDate}}</strong> and <strong>{{returnDate}}</strong> | <a routerLink="/">Back to Home</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf ="(flightsFound && returnFlightsFound) && returnAttempting">
+
+
+        <div class="row result_row" *ngFor="let result of currentItemsToShow,  let i=index; ">
+          <div class="row extra_row">
+            <div class="col-lg-3">
+              <div class="row responsive_adjustment">
+                <div class="col-lg-4  col-6">
+                  <div class="air_logo">
+                    <img [src]="result.logo">
+                  </div>
+                </div>
+                <div class="col-lg-8  col-6 flex_vertical">
+                  <div class="air_name">{{searchResult[i].airline_name}}  </div>
+                  <div class="air_number">{{searchResult[i].flight_number}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="row">
+                <div class="col-md-4  flex_vertical place_to_place">
+                    <div class="flight_place">{{searchResult[i].fromCity}}</div>
+                    <div class="flight_time">Dep: {{searchResult[i].depTime}} - Arr: {{searchResult[i].arrTime}}</div>
+                    <div class="flight_place">{{searchResult[i].toCity}}</div>
+                </div>
+                <div class="col-md-4 flex_vertical hours_and_stops">
+                    <div class="flight_duration"> <span>{{searchResult[i].duration}} </span>hrs</div>
+                    <div class="hr"></div>
+                    <div class="flight_stops">  <span>{{searchResult[i].noofstops == 0 ? "Non stop" : "Stops : "+searchResult[i].noofstops }} </span></div>
+                </div>
+                <div class="col-md-4 flex_vertical date_cover">
+                    <div class="flight_time">Date</div>
+                    <div class="flight_place">{{searchResult[i].travelDate}}</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row extra_row2">
+            <div class="col-lg-3">
+              <div class="row responsive_adjustment">
+                <div class="col-lg-4  col-6">
+                  <div class="air_logo">
+                    <img [src]="result.logo">
+                  </div>
+                </div>
+                <div class="col-lg-8  col-6 flex_vertical">
+                  <div class="air_name">{{returnSearchResult[i].airline_name}}  </div>
+                  <div class="air_number">{{returnSearchResult[i].flight_number}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="row">
+                <div class="col-md-4  flex_vertical place_to_place">
+                    <div class="flight_place">{{returnSearchResult[i].fromCity}}</div>
+                    <div class="flight_time">Dep: N/A - Arr: N/A</div>
+                    <div class="flight_place">{{returnSearchResult[i].toCity}}</div>
+                </div>
+                <div class="col-md-4 flex_vertical hours_and_stops">
+                    <div class="flight_duration"> <span>{{returnSearchResult[i].duration}} </span>hrs</div>
+                    <div class="hr"></div>
+                    <div class="flight_stops">  <span>{{returnSearchResult[i].noofstops == 0 ? "Non stop" : "Stops : "+returnSearchResult[i].noofstops }} </span></div>
+                </div>
+                <div class="col-md-4 flex_vertical date_cover">
+                    <div class="flight_time">Date</div>
+                    <div class="flight_place">{{returnSearchResult[i].travelDate}}</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row  extra_row3">
+
+            <div class="col-12">
+              <div class="price_book_return">
+                 <div>Return flight total cost : <span class="price">${{searchResult[i].price + searchResult[i].price}}</span></div>
+                 <button class="btn btn-success" (click) ="bookNow(i)">Book Now</button>
+              </div>
+           </div>
+          </div>
+
+        </div>
+      </div>
+
+      <mat-paginator  *ngIf="!returnAttempting" (page)="onPageChange($event)" [length]="searchResult.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
+      <mat-paginator  *ngIf="returnAttempting" (page)="onPageChange($event)"
+       [length]="searchResult.length >= returnSearchResult.length ? returnSearchResult.length : searchResult.length "
+       [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

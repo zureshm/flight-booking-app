@@ -1,0 +1,130 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md 12 login_form_cover">
+      <div class="row">
+        <div class="col-md-12">BOOKING FORM</div>
+      </div>
+      <form [formGroup]="searchForm" (ngSubmit) = "onSubmit()">
+        <div class="row sp_row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8 ">
+            <div class="form-check-inline" *ngFor="let valuex of tripType">
+                <div class="custom-control custom-radio col" >
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="{{valuex.value}}a"
+                    formControlName="returncheck"
+                    [value]="valuex.value"
+                  />
+                  <label class="custom-control-label" for="{{valuex.value}}a"
+                    >{{valuex.htmlValue}}</label
+                  >
+                </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Source City <span class="req">*</span></div>
+          <div class="col-md-8">
+            <div class="form-group adj_for_mat">
+              <input type="text" class="form-control"
+
+              >
+              <mat-form-field appearance="none"  >
+                <input type="text" style="background:transparent"
+                        placeholder="Type here"
+                        aria-label="Number"
+                        matInput
+                        formControlName="sourcecity"
+                        (keydown.enter)="$event.preventDefault()"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete"   class="xxx_multi_adj">
+                  <mat-option *ngFor="let option of filteredCities | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Destination City <span class="req">*</span></div>
+          <div class="col-md-8">
+            <div class="form-group adj_for_mat">
+              <input type="text" class="form-control"
+
+              >
+              <mat-form-field appearance="none"  >
+                <input type="text" style="background:transparent"
+                        placeholder="Type here"
+                        aria-label="Number"
+                        matInput
+                        formControlName="destinationcity"
+                        (keydown.enter)="$event.preventDefault()"
+                        [matAutocomplete]="auto2">
+                <mat-autocomplete #auto2="matAutocomplete"   class="xxx_multi_adj">
+                  <mat-option *ngFor="let option of filteredCities2 | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Travel Date <span class="req">*</span></div>
+          <div class="col-md-8">
+            <div class="form-group adj_for_date">
+              <input type="text" class="form-control" >
+              <mat-form-field appearance="none">
+                <mat-label>Enter Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="journeydate" (dateChange)="onChange_startDate()" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row"  *ngIf="searchForm.get('returncheck').value==2">
+          <div class="col-md-4">Return Date</div>
+          <div class="col-md-8">
+            <div class="form-group adj_for_date">
+              <input type="text" class="form-control">
+              <mat-form-field appearance="none">
+                <mat-label>Enter Date</mat-label>
+                <input matInput [matDatepicker]="picker2"
+                [min]="startDate"
+                formControlName="returndate"
+                >
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8">
+            <div class="form-group d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p><span class="req">*</span> Required fields</p>
+            <h3 style="text-decoration: underline;">Test Hints : As per the JSON data used -</h3>
+            <p>* Flights for Mumbai, Delhi, Kolkata, Bangalore and Chennai Only</p>
+            <p>* Date 27-Jan-2021 to 3-Feb-2021 only</p>
+            <p>* Only Mumbai - Delhi, at 27-Jan-2021 have more than 5 results to use the pagination</p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>

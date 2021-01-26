@@ -1,0 +1,46 @@
+@media (max-width:990px){
+  .result_row .col-lg-3 .row{
+    margin-bottom: 20px;
+  }
+  .result_row .col-lg-6 .row{
+    margin-bottom: 20px;
+  }
+  .result_row .price_book{max-width:initial; justify-content: space-between;}
+  .responsive_adjustment{
+     justify-content: space-between;
+     .flex_vertical{
+       text-align: right;
+     }
+    }
+
+    .login_form_cover{padding:0 40px; width:calc(100% - 80px);}
+    .search_result_cover{margin:20px auto; width:calc(100% - 80px); }
+
+}
+@media (max-width:766px){
+  .wrapper{overflow-x: hidden;}
+  .place_to_place {
+    padding: 20px 0;
+    background: #eee;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .hours_and_stops {
+    padding: 20px 0;
+    background: #eee;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .date_cover {
+    padding: 20px 0;
+    background: #eee;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+}
+

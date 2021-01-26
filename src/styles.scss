@@ -1,0 +1,134 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("./bootstrap.min.css"); /* BOOTSTRAP */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/*resetting some bootstrap*/@at-root
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{padding:0}
+
+body,input{font-family: 'Montserrat', sans-serif!important;}
+.wrapper{width:auto; height:auto;}
+.header{width:100%; height:50px; background-color: coral;
+  h4{padding:10px 0; color:#fff}
+}
+.mat-h4, .mat-subheading-1, .mat-typography h4{font-family: 'Montserrat', sans-serif!important;}
+.margin_0{margin-left:0!important; margin-right: 0!important;}
+
+h4.home_link{cursor: pointer; border:0; outline:0; font-weight: 600;}
+.login_form_cover{
+  max-width:800px;
+  padding:20px!important;
+  background:#fefefe;
+  margin:20px auto;
+  border:1px solid #efefef;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px 2px #dfdfdf;
+}
+span.req{color:red}
+.sp_row{
+  height:40px
+}
+
+.search_result_cover{
+  max-width:1000px;
+  padding:20px!important;
+  background:#eee;
+  margin:20px auto;
+  border:1px solid #efefef;
+
+}
+
+.total_row{
+  padding:20px 0
+}
+
+.result_row{
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px 1px #dfdfdf;
+  padding:20px 10px!important;
+  background:#fff;
+  margin:0!important;
+  margin-bottom: 10px!important;
+
+  .extra_row{
+    background:#f5f5f5;
+    padding: 10px;
+    margin:0!important;
+    border-bottom: 1px solid #dfdfdf;
+  }
+  .extra_row2{
+    background:#fff;
+    padding: 10px;
+    margin:0!important;
+    border-bottom: 1px solid #dfdfdf;
+  }
+
+  .extra_row3{
+    background:#efefef;
+    padding: 10px;
+    margin:0!important;
+
+  }
+
+  .air_logo{
+    width:100%; height:auto; max-width:100px;
+    img{display:block; width:100%; height: 60px; object-fit: cover; }
+  }
+  .flex_vertical{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .air_name{
+    width:100%;  font-weight: 600; font-size: 16px;
+  }
+  .air_number{
+    width:100%;  font-weight: 400;
+    color:#666
+  }
+  .flight_time{
+    font-size: 13px; width:100%;  font-weight: 400; text-align: center;
+  }
+  .flight_place{
+    font-size: 16px; width:100%;  font-weight: 600; text-align: center;
+  }
+
+
+  .flight_duration{
+    font-size:14px; color:#666; width:100%; text-align: center;
+    span{font-size:18px; color:#222}
+  }
+  .hr{width:60%; height:2px; background-color: #222; margin:5px auto;}
+  .flight_stops{
+    font-size:14px; width:100%;  color:coral; text-align: center;
+    span{font-weight: 600;}
+  }
+
+  .price_book{
+    width:100%; max-width:250px; display:flex; justify-content: space-around; align-items: center;
+    .price{color:coral; font-size: 24px; font-weight: 600;;}
+  }
+
+  .price_book_return{
+    width:100%;   display:flex; justify-content: space-between; align-items: center;
+    .price{color:coral; font-size: 24px; font-weight: 600;;}
+  }
+}
+
+.form-control input[type="text"]{
+  height: 50px;
+  border-color: #ededed;
+  background: #fafafa;
+  border-radius: 10px;
+
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "_mat_styles";
+@import "_responsive.scss";
