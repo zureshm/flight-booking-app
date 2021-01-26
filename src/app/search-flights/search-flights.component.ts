@@ -28,13 +28,13 @@ export class SearchFlightsComponent implements OnInit {
   filteredCities: Observable<string[]>;
   private _CurentCity(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.sourceCities.filter(xxx => xxx.toLowerCase().includes(filterValue));
+    return this.sourceCities.filter(xxx => xxx.toLowerCase().startsWith(filterValue));
   }
 
   filteredCities2: Observable<string[]>;
   private _CurentCity2(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.sourceCities.filter(xxx => xxx.toLowerCase().includes(filterValue));
+    return this.sourceCities.filter(xxx => xxx.toLowerCase().startsWith(filterValue));
   }
 
   constructor(private flightService: FlightBookingService, private router: Router) { }
