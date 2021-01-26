@@ -5,7 +5,7 @@
       <p>Flight Number: <strong>{{flightNumber}}</strong></p>
       <p>Flight Time: <strong>{{flightTime}}</strong></p>
       <br>
-      <p>Flight Cost: {{flightCost}}</p>
+      <p>Flight Cost: <strong>$ {{flightCost}}</strong></p>
     </div>
 
     <div class="col-md-12 login_form_cover" *ngIf="returnAttempting">
@@ -18,7 +18,7 @@
       <p>Return Flight Time: <strong>{{flightTimeReturn}}</strong></p>
 
       <br>
-      <p>Flight Cost: <strong>$ </strong></p>
+      <p>Flight Cost: <strong>$ {{ flightCostReturn}}</strong></p>
     </div>
   </div>
   <div class="row">
